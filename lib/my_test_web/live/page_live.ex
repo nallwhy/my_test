@@ -1,8 +1,12 @@
 defmodule MyTestWeb.PageLive do
   use MyTestWeb, :live_view
 
+  on_mount(MyTestWeb.UserLiveAuth)
+
   @impl true
   def mount(_params, _session, socket) do
+    _user_id = socket.assigns.user_id
+
     {:ok, assign(socket, query: "", results: %{})}
   end
 
